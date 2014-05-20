@@ -46,3 +46,11 @@ total_acc_z_test<-read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_z_
 total_acc_z_train<-read.table("UCI HAR Dataset/train/Inertial Signals/total_acc_z_train.txt")
 total_acc_z_merge<-rbind(total_acc_z_test,total_acc_z_train)
 
+
+
+measurement_labels<-read.table("UCI HAR Dataset/features.txt")
+colnames(X_merge)<-measurement_labels[,2]
+X_meansAndStds<-X_merge[,grep("mean|std",colnames(X_merge))]
+
+
+replace <- function(a){for (i in 1:6) {if (a==i) {a<-activity_labels[i]}}} a }
